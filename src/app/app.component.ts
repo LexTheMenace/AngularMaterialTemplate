@@ -12,4 +12,7 @@ export class AppComponent {
     let sorted = this.items.sort((a, b) => (a.id > b.id ? 1 : -1));
     this.items = direction === 'asc' ? sorted : sorted.reverse();
   }
+  removeItem(id: number) {
+    this.items = this.items.filter((i) => i.id !== id);
+  }
 }

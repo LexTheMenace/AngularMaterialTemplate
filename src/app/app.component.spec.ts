@@ -1,6 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { MatListModule } from '@angular/material/list';
 
 describe('AppComponent', () => {
   let fixture: any;
@@ -8,7 +9,7 @@ describe('AppComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
+      imports: [RouterTestingModule, MatListModule],
       declarations: [AppComponent],
     }).compileComponents();
   });
@@ -20,15 +21,20 @@ describe('AppComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it(`should have as title 'ng-mat-jest'`, () => {
+  it(`should sort asc by default`, () => {
     component.items = [{ id: 2 }, { id: 3 }, { id: 1 }];
     component.sortItems();
     expect(component.items[0].id).toEqual(1);
   });
 
-  it('should render title', () => {
+  it('should sort desc', () => {
     component.items = [{ id: 2 }, { id: 3 }, { id: 1 }];
     component.sortItems('desc');
     expect(component.items[0].id).toEqual(3);
+  });
+  it('should delete', () => {
+    component.items = [{ id: 2 }, { id: 3 }, { id: 1 }];
+    component.removeItem(2);
+    expect(component.items.length).toEqual(2);
   });
 });
