@@ -6,7 +6,10 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "jest-install": "npm install -D jest jest-preset-angular @types/jest --force",
+    "karma-uninstall": "npm remove @types/jasmine karma karma-chrome-launcher karma-coverage karma-coverage-istanbul-reporter karma-jasmine karma-jasmine-html-reporter jasmine-core --force",
+    "test:install": "npm run jest-install && npm run karma-uninstall"
   },
   "private": true,
   "dependencies": {
@@ -26,14 +29,10 @@
     "@angular-devkit/build-angular": "~12.2.6",
     "@angular/cli": "~12.2.6",
     "@angular/compiler-cli": "~12.2.0",
-    "@types/jasmine": "~3.8.0",
+    "@types/jest": "^29.5.5",
     "@types/node": "^12.11.1",
-    "jasmine-core": "~3.8.0",
-    "karma": "~6.3.0",
-    "karma-chrome-launcher": "~3.1.0",
-    "karma-coverage": "~2.0.3",
-    "karma-jasmine": "~4.0.0",
-    "karma-jasmine-html-reporter": "~1.7.0",
+    "jest": "^29.7.0",
+    "jest-preset-angular": "^13.1.2",
     "typescript": "~4.3.5"
   }
 }
