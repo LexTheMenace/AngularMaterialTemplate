@@ -6,7 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
+    "test": "jest",
     "jest-install": "npm install -D jest jest-preset-angular @types/jest --force",
     "karma-uninstall": "npm remove @types/jasmine karma karma-chrome-launcher karma-coverage karma-coverage-istanbul-reporter karma-jasmine karma-jasmine-html-reporter jasmine-core --force",
     "test:install": "npm run jest-install && npm run karma-uninstall"
@@ -34,5 +34,25 @@
     "jest": "^29.7.0",
     "jest-preset-angular": "^13.1.2",
     "typescript": "~4.3.5"
+  },
+  "jest": {
+    "preset": "jest-preset-angular",
+    "setupFilesAfterEnv": [
+      "<rootDir>/src/setupJest.ts"
+    ],
+    "collectCoverage": true,
+    "coverageDirectory": "coverage",
+    "collectCoverageFrom": [
+      "src/app/**/*.ts"
+    ],
+    "coveragePathIgnorePatterns": [],
+    "coverageThreshold": {
+      "global": {
+        "statements": 75,
+        "branches": 50,
+        "functions": 75,
+        "lines": 75
+      }
+    }
   }
 }
